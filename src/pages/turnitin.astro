@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LayoutAdmin from "../layouts/LayoutAdmin.astro";
+---
+
+<Layout title="Turnitin Biblioteca Digital">
+    <LayoutAdmin pageName="turnitin">
+        <h1>Detectar de plagio </h1>
+        <!-- component -->
+        <main class="flex min-h-screen w-full items-center justify-center bg-gray-100">
+            <!-- component -->
+            <form class="relative" method="post" enctype="multipart/form-data" action="/ruta-donde-se-subira-el-archivo">
+                <input 
+                    id="file-upload" 
+                    type="file" 
+                    name="document" 
+                    class="hidden"
+                    required
+                />
+                <label for="file-upload" class="group relative h-12 w-60  overflow-hidden rounded-2xl bg-gradient-to-tr from-red-600 to-red-400 text-lg font-bold text-white cursor-pointer flex items-center justify-center">
+                    Seleccionar documento
+                    <div class="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+                </label>
+              </button>
+              <!-- Enlace estilizado como botón -->
+              <a href="https://www.grammarly.com/plagiarism-checker?utm_source=google&utm_medium=cpc&utm_campaign=19841729275&utm_content=652327863794&utm_term=scan%20my%20paper%20for%20plagiarism&target=&targetid=kwd-308722971046&adgroup=146708455109&device=c&matchtype=b&placement=&network=g&extension=&clickid=CjwKCAjwg8qzBhAoEiwAWagLrOAwgcZSMqDbp246TMStYzIxXNxrhljLO6pf6kjQv1Si8aIV591i1xoC_LsQAvD_BwE&gad_source=1&gclid=CjwKCAjwg8qzBhAoEiwAWagLrOAwgcZSMqDbp246TMStYzIxXNxrhljLO6pf6kjQv1Si8aIV591i1xoC_LsQAvD_BwE&gclsrc=aw.ds" class="group relative h-11 w-60 mt-4 overflow-hidden rounded-2xl bg-gradient-to-tr from-red-600 to-red-400 text-lg font-bold text-white flex items-center justify-center">
+                  Turnitin
+                  <div class="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+              </a>
+            </form>
+        </main>
+    </LayoutAdmin>
+</Layout>

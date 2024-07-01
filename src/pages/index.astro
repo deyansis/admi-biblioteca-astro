@@ -1,0 +1,253 @@
+---
+import type { Props as CardProps } from "../components/dashboard/Card.astro";
+import Card from "../components/dashboard/Card.astro";
+import Layout from "../layouts/Layout.astro";
+import LayoutAdmin from "../layouts/LayoutAdmin.astro";
+
+
+
+const documentCards: CardProps[] = [
+  {
+    detalle: "Esta ultima semana.",
+    icon: "documentoTotal",
+    info: "10",
+    title: "Total de documentos registrados",
+    porcentaje: "+55%",
+    color: "primary",
+  },
+  {
+    detalle: "El dia de hoy.",
+    icon: "documentoPendiente",
+    info: "15",
+    title: "Documentos pendientes",
+    porcentaje: "+3%",
+    color: "secundary",
+  },
+  {
+    detalle: "Esta ultima semana.",
+    icon: "documento",
+    info: "25",
+    title: "Documentos revisados",
+    porcentaje: "+55%",
+    color: "primary",
+  },
+];
+---
+
+<Layout title="monitoreo de documentos">
+  <LayoutAdmin pageName="monitoreo de documento">
+    <div class="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+      {documentCards.map((card, index) => (
+        <Card
+          
+          icon={card.icon}
+          detalle={card.detalle}
+          info={card.info}
+          title={card.title}
+          porcentaje={card.porcentaje}
+          color={card.color}
+        />
+      ))}
+    </div>
+
+    <div class="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-4">
+      <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-3">
+        <div class="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
+          <div>
+            <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-gray-900 mb-1">
+              Estadísticas de Documentos
+            </h6>
+            <p class="antialiased font-sans text-sm leading-normal flex items-center gap-1 font-normal text-blue-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" aria-hidden="true" class="h-4 w-4 text-blue-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+              </svg>
+              <strong>100 documentos</strong> subidos en el mes.
+            </p>
+          </div>
+          <button aria-expanded="false" aria-haspopup="menu" id=":r5:" class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30" type="button">
+            <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currenColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" aria-hidden="true" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+        <div class="p-6 overflow-x-scroll px-0 pt-0 pb-2">
+          <table class="w-full min-w-[640px] table-auto" id="documentTable">
+            <thead>
+              <tr>
+                <th class="border-b border-blue-gray-50 py-3 px-6 text-left">
+                  <p class="block antialiased font-sans text-[11px] font-medium uppercase text-blue-gray-400">Documento</p>
+                </th>
+                <th class="border-b border-blue-gray-50 py-3 px-6 text-left">
+                  <p class="block antialiased font-sans text-[11px] font-medium uppercase text-blue-gray-400">Fecha de recepción</p>
+                </th>
+                <th class="border-b border-blue-gray-50 py-3 px-6 text-left">
+                  <p class="block antialiased font-sans text-[11px] font-medium uppercase text-blue-gray-400">Estado</p>
+                </th>
+                <th class="border-b border-blue-gray-50 py-3 px-6 text-left">
+                  <p class="block antialiased font-sans text-[11px] font-medium uppercase text-blue-gray-400">Acciones</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+			 
+
+			  <tr>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex items-center gap-4">
+                    <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Liderazgo de personal de salud</p>
+                  </div>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">22/06/2024</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">Revisado</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex gap-2">
+                    <a href="https://repositorio.ucv.edu.pe/bitstream/handle/20.500.12692/144250/Sanchez_PLD-SD.pdf?sequence=1&isAllowed=y" class="px-3 py-1 bg-blue-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V7H5zm7-2q-2.05 0-3.662-1.112T6 13q.725-1.775 2.338-2.887T12 9t3.663 1.113T18 13q-.725 1.775-2.337 2.888T12 17m0-2.5q-.625 0-1.062-.437T10.5 13t.438-1.062T12 11.5t1.063.438T13.5 13t-.437 1.063T12 14.5m0 1q1.05 0 1.775-.725T14.5 13t-.725-1.775T12 10.5t-1.775.725T9.5 13t.725 1.775T12 15.5"/>
+                      </svg>
+                    </a>
+                    <button class="px-3 py-1 bg-red-500 text-white rounded-md delete-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
+                    <button class="px-3 py-1 bg-green-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+			  <tr>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex items-center gap-4">
+                    <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">El informe policial y los medios de prueba en el nuevo proceso penal</p>
+                  </div>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">15/06/2024</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">Revisado</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex gap-2">
+                    <a href="https://repositorio.ucv.edu.pe/bitstream/handle/20.500.12692/65391/Atayupanqui_QLM-SD.pdf?sequence=1&isAllowed=y" class="px-3 py-1 bg-blue-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V7H5zm7-2q-2.05 0-3.662-1.112T6 13q.725-1.775 2.338-2.887T12 9t3.663 1.113T18 13q-.725 1.775-2.337 2.888T12 17m0-2.5q-.625 0-1.062-.437T10.5 13t.438-1.062T12 11.5t1.063.438T13.5 13t-.437 1.063T12 14.5m0 1q1.05 0 1.775-.725T14.5 13t-.725-1.775T12 10.5t-1.775.725T9.5 13t.725 1.775T12 15.5"/>
+                      </svg>
+                    </a>
+                    <button class="px-3 py-1 bg-red-500 text-white rounded-md delete-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
+                    <button class="px-3 py-1 bg-green-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+			  <tr>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex items-center gap-4">
+                    <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">El informe policial y los medios de prueba en el nuevo proceso penal</p>
+                  </div>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">15/06/2024</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">Revisado</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex gap-2">
+                    <a href="https://repositorio.ucv.edu.pe/bitstream/handle/20.500.12692/65391/Atayupanqui_QLM-SD.pdf?sequence=1&isAllowed=y" class="px-3 py-1 bg-blue-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V7H5zm7-2q-2.05 0-3.662-1.112T6 13q.725-1.775 2.338-2.887T12 9t3.663 1.113T18 13q-.725 1.775-2.337 2.888T12 17m0-2.5q-.625 0-1.062-.437T10.5 13t.438-1.062T12 11.5t1.063.438T13.5 13t-.437 1.063T12 14.5m0 1q1.05 0 1.775-.725T14.5 13t-.725-1.775T12 10.5t-1.775.725T9.5 13t.725 1.775T12 15.5"/>
+                      </svg>
+                    </a>
+                    <button class="px-3 py-1 bg-red-500 text-white rounded-md delete-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
+                    <button class="px-3 py-1 bg-green-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+			  <tr>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex items-center gap-4">
+                    <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">El informe policial y los medios de prueba en el nuevo proceso penal</p>
+                  </div>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">15/06/2024</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <p class="block antialiased font-sans text-xs font-medium text-blue-gray-600">Revisado</p>
+                </td>
+                <td class="py-3 px-5 border-b border-blue-gray-50">
+                  <div class="flex gap-2">
+                    <a href="https://repositorio.ucv.edu.pe/bitstream/handle/20.500.12692/65391/Atayupanqui_QLM-SD.pdf?sequence=1&isAllowed=y" class="px-3 py-1 bg-blue-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V7H5zm7-2q-2.05 0-3.662-1.112T6 13q.725-1.775 2.338-2.887T12 9t3.663 1.113T18 13q-.725 1.775-2.337 2.888T12 17m0-2.5q-.625 0-1.062-.437T10.5 13t.438-1.062T12 11.5t1.063.438T13.5 13t-.437 1.063T12 14.5m0 1q1.05 0 1.775-.725T14.5 13t-.725-1.775T12 10.5t-1.775.725T9.5 13t.725 1.775T12 15.5"/>
+                      </svg>
+                    </a>
+                    <button class="px-3 py-1 bg-red-500 text-white rounded-md delete-button">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                      </svg>
+                    </button>
+                    <button class="px-3 py-1 bg-green-500 text-white rounded-md">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- Repeat the <tr> for each document row as needed -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+ </div>
+      </div>
+    </div>
+  </LayoutAdmin>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const row = button.closest('tr');
+        row?.remove();
+      });
+    });
+  });
+
+  
+</script>
+

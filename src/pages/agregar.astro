@@ -1,0 +1,185 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LayoutAdmin from "../layouts/LayoutAdmin.astro";
+---
+
+<Layout title="agregar Biblioteca Digital">
+    <LayoutAdmin pageName="agregar usuario">
+        <!-- component -->
+        <div class="flex items-center justify-center" x-data="addUserAdmin">
+            <form
+                @submit.prevent="submitForm"
+                class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            >
+                <h1
+                    class="block text-gray-700 font-bold mb-2 text-xl text-center"
+                >
+                    CUESTIONARIO PARA REGISTRO DE UN NUEVO USUARIO
+                </h1>
+                <br />
+                <div class="mb-4">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        for="name"
+                    >
+                        Nombre
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="name"
+                        id="name"
+                        x-model="form.name"
+                        type="text"
+                        placeholder="Ingresa tu nombre"
+                        required
+                    />
+                </div>
+
+                <div class="mb-4">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        for="app_paterno"
+                    >
+                        Apellido Paterno
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="app_paterno"
+                        id="app_paterno"
+                        x-model="form.app_paterno"
+                        type="text"
+                        placeholder="Ingresa tu Apellido Paterno"
+                        required
+                    />
+                </div>
+
+                <div class="mb-4">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        for="app_materno"
+                    >
+                        Apellido Materno
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="app_materno"
+                        id="app_materno"
+                        x-model="form.app_materno"
+                        type="text"
+                        placeholder="Ingresa tu Apellido Materno"
+                        required
+                    />
+                </div>
+
+                <div class="mb-4">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        for="email"
+                    >
+                        Correo
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="email"
+                        id="email"
+                        x-model="form.email"
+                        type="email"
+                        placeholder="Ingresa tu correo"
+                        required
+                    />
+                </div>
+
+                <div class="mb-4">
+                    <label
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        for="password"
+                    >
+                        Contraseña
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="password"
+                        id="password"
+                        x-model="form.password"
+                        type="text"
+                        placeholder="Ingresa tu Contraseña"
+                        required
+                    />
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button
+                        class="bg-gradient-to-tr from-red-600 to-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                            ></path>
+                        </svg>
+                        Agregar usuario
+                    </button>
+                </div>
+
+                <div class="mb-10" x-show="isSubmitted">
+                    <h2 class="text-green-600 font-bold">Se Creo el usuario</h2>
+                </div>
+            </form>
+        </div>
+    </LayoutAdmin>
+</Layout>
+
+<script>
+    import Alpine from "alpinejs";
+
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("addUserAdmin", () => ({
+            form: {
+                name: "",
+                app_paterno: "",
+                app_materno: "",
+                password: "",
+                email: "",
+            },
+
+            isSubmitted: false,
+
+            async submitForm() {
+                const response = await fetch(
+                    `http://localhost:9000/admin/create`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        credentials: "include",
+                        body: JSON.stringify({
+                            nombre: this.form.name,
+                            apellido_materno: this.form.app_materno,
+                            apellido_paterno: this.form.app_paterno,
+                            email: this.form.email,
+                            password: this.form.password,
+                        }),
+                    },
+                )
+                    .then(() => {
+                        this.isSubmitted = true;
+                    })
+                    .finally(() => {
+                        setTimeout(() => {
+                            this.isSubmitted = false;
+                        }, 10000);
+                    });
+            },
+        }));
+    });
+</script>

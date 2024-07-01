@@ -1,0 +1,73 @@
+---
+import Icon from "../Icon.astro";
+
+export interface Props {
+    icon: string;
+    title: string;
+    info: string;
+    detalle: string;
+    porcentaje?: string;
+    color?: "primary"| "secundary";
+}
+
+const {
+    icon,
+    title,
+    info,
+    detalle,
+    porcentaje,
+    color = "primary",
+} = Astro.props;
+
+
+const COLOR_APP = {
+    "primary" : "from-biblio-primary to-biblio-primary/60",
+    "secundary": "from-biblio-secundary to-biblio-secundary/60"
+}
+
+---
+
+<div
+    class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
+>
+    <div
+        class=`bg-clip-border
+                mx-4
+                rounded-xl
+                overflow-hidden
+                bg-gradient-to-tr
+                ${COLOR_APP[color]}
+                text-white
+                shadow-blue-500/40
+                shadow-lg
+                absolute
+                -mt-4
+                grid
+                h-16
+                w-16
+                place-items-center`
+    >
+        <Icon icon={icon} />
+    </div>
+    <div class="p-4 text-right h-[80%] flex flex-col items-end ">
+        <p
+            class="block antialiased font-sans leading-normal text-blue-gray-600 text-2xl font-bold w-[75%] "
+        >
+            {title}
+        </p>
+        <h4
+            class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900"
+        >
+            {info}
+        </h4>
+    </div>
+    <div class="border-t border-blue-gray-50 p-4">
+        <p
+            class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600"
+        >
+            {porcentaje && <strong class="text-green-500">{porcentaje}</strong>}
+            &nbsp;
+            {detalle}
+        </p>
+    </div>
+</div>

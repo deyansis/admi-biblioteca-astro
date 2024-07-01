@@ -1,0 +1,41 @@
+---
+import Icon from "./Icon.astro";
+import ItemNavbarAdmin from "./ItemNavbarAdmin.astro";
+
+interface Item {
+    icon: string
+    label: string
+    link?: string
+}
+
+interface Props {
+    items: Item[];
+    title?: string;
+}
+
+const { title, items } = Astro.props;
+---
+
+<ul class="mb-4 flex flex-col gap-1">
+    {
+        title && (
+            <li class="mx-3.5 mt-4 mb-2">
+                <p class="block antialiased font-sans text-sm leading-normal text-white font-black uppercase opacity-75">
+                    {title}
+                </p>
+            </li>
+        )
+    }
+
+    {
+        items.map((item) => {
+            return (
+                <ItemNavbarAdmin nameItem={item.label} link={item.link}>
+                    <Icon icon={item.icon} />
+                </ItemNavbarAdmin>
+            );
+        })
+    }
+
+
+</ul>
