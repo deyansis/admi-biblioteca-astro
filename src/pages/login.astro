@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-if(Astro.cookies.has("user")) return Astro.redirect("/")
+
 
 ---
 
@@ -60,7 +60,8 @@ if(Astro.cookies.has("user")) return Astro.redirect("/")
 
 <script>
     import Alpine from "alpinejs";
-    import {navigate} from "astro:transitions/client"
+    import { navigate } from "astro:transitions/client";
+
     document.addEventListener("alpine:init", () => {
         Alpine.data("loginData", () => ({
             email: "",
@@ -70,7 +71,7 @@ if(Astro.cookies.has("user")) return Astro.redirect("/")
                 e.preventDefault();
 
                 const response = await fetch(
-                    `http://localhost:9000/admin/login`,
+                    `${import.meta.env.PUBLIC_URL_API}/admin/login`,
                     {
                         method: "POST",
                         headers: {
@@ -84,8 +85,7 @@ if(Astro.cookies.has("user")) return Astro.redirect("/")
                     },
                 );
 
-                if(response.ok) navigate("/")
-
+                if (response.ok) navigate("/");
             },
         }));
     });

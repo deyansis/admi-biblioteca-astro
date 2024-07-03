@@ -154,8 +154,8 @@ import LayoutAdmin from "../layouts/LayoutAdmin.astro";
             isSubmitted: false,
 
             async submitForm() {
-                const response = await fetch(
-                    `http://localhost:9000/admin/create`,
+                await fetch(
+                    `${import.meta.env.PUBLIC_URL_API}/admin/create`,
                     {
                         method: "POST",
                         headers: {
